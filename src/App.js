@@ -1,4 +1,8 @@
+import {useEffect, useState} from "react";
+
 export default function App() {
+	
+
 	return (
 		<div id="content">
 			<nav>
@@ -17,13 +21,14 @@ export default function App() {
 					<button>Grumpy 1</button>
 				</div>
 			</nav>
+
 			<div id="content">
 				<div id="postHolder">
 					<div className="catPost">
 						<img />
 
 						<div className="tags">
-							<button>Floofy</button>
+							<button>${tag[0]}</button>
 							<button>Cute</button>
 							<button>Kitten</button>
 						</div>
@@ -43,6 +48,7 @@ export default function App() {
 					</div>
 				</div>
 			</div>
+
 			<footer>
 				<p>Made by:</p>
 				<p>Thomas - Kurtus - Zac</p>
