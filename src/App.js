@@ -22,6 +22,15 @@ export default function App() {
 				</div>
 			</nav>
 
+			<div id="basket">
+				<div className="basketCat">
+					<img src="" />
+
+					<p>Name</p>
+					<p>Price</p>
+				</div>
+			</div>
+
 			<div id="content">
 				<div id="postHolder">
 					<div className="catPost">
