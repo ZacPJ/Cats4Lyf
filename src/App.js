@@ -7,6 +7,7 @@ export default function App() {
 						<h1>Cats 4 Life</h1>
 						<img src="" />
 					</div>
+
 					<img src="" />
 				</div>
 
@@ -20,12 +21,31 @@ export default function App() {
 				<div id="postHolder">
 					<div className="catPost">
 						<img />
+
+						<div className="tags">
+							<button>Floofy</button>
+							<button>Cute</button>
+							<button>Kitten</button>
+						</div>
+
+						<div className="catInfo">
+							<div className="catAbout">
+								<p></p>
+							</div>
+
+							<p></p>
+
+							<div className="priceBar">
+								<p></p>
+								<img className="addCart" />
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 			<footer>
-				<p></p>
-				<p></p>
+				<p>Made by:</p>
+				<p>Thomas - Kurtus - Zac</p>
 			</footer>
 		</div>
 	);
