@@ -1,7 +1,30 @@
 import {useEffect, useState} from "react";
 
 export default function App() {
-	
+	const [cats, setCats] = useState([]);
+	const url = `https://api.thecatapi.com/v1/images/search?limit=10`;
+	const api_key = "72eb923a-6495-4792-821c-9f163794b194"
+
+	useEffect(() => {
+		const setCats = async () => {
+			try {
+				const response = await fetch(url,{headers: {'x-api-key': api_key}});
+
+				if(!response.ok){
+					throw new Error(response.statusText);
+				}
+				
+				const data = await response.json();
+				setCats(data);
+			} catch (err){
+				console.log(err.message);
+			}
+		}
+
+		
+	}, [])
+
+	console.log(cats)
 
 	return (
 		<div id="content">
