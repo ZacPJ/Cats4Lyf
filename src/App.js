@@ -37,7 +37,7 @@ export default function App() {
 						<img />
 
 						<div className="tags">
-							<button>${tag[0]}</button>
+							<button>Floofy</button>
 							<button>Cute</button>
 							<button>Kitten</button>
 						</div>
