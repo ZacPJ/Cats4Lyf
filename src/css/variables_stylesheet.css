@@ -1,0 +1,25 @@
+/* Variables for the main colours used. */
+
+/* Orange */
+:root {
+    ---pure_orange: #cd6600;
+    --orange_lighter: #d77d26;
+    --orange_much_lighter: #c0956e;
+    --orange_lightest: #b7afa8;
+
+    --orange_darker: #a05001;
+    --orange_much_darker: #733901;
+    --orange_darkest: #462301;
+
+
+    /* Black and white colours */ 
+    --pure_white: #fff9e7; 
+    --pure_black: #292421;
+}
+
+
+
+/* Gradients */
+:root {
+    --black_gradient: #433a34;
+}
