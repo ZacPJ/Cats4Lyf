@@ -30,6 +30,7 @@ if (index === randomImg1){
 }
 })
 console.log(catRoster)
+
 	return (
 		<div id="mainWrapper">
 		<nav id="topBarMain">
@@ -80,9 +81,6 @@ console.log(catRoster)
 						<img src="" alt="" />
 
 						<div className="tags">
-							<button>Floofy</button>
-							<button>Cute</button>
-							<button>Kitten</button>
 						</div>
 
 						<div className="catInfo">
