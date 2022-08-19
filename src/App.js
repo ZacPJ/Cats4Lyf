@@ -16,7 +16,6 @@ fetchCat(setCat,setError);
 
 },[] );
 
-
 	return (
 		<div id="mainWrapper">
 		<nav id="topBarMain">
@@ -30,17 +29,17 @@ fetchCat(setCat,setError);
 						if(index == randomImg1){
 						return(
 							<div key = {index}>
-							<img src={(cat.img)} />
-						   <h1>{cat.name}</h1>
-						   <p>{cat.sex}</p>
-						   <p>{cat.breed}</p>
-						   <p>{cat.location}</p>
-						   <p>{cat.age}</p>
-						   <p>£{cat.price}</p>
-						   <p>{cat.basket}</p>
-						   <p>{cat.adjectives}</p>
-						   <p>{cat.description}</p>
-						   </div>
+								<img src={(cat.img)} />
+								<h1>{cat.name}</h1>
+								<p>{cat.sex}</p>
+								<p>{cat.breed}</p>
+								<p>{cat.location}</p>
+								<p>{cat.age}</p>
+								<p>£{cat.price}</p>
+								<p>{cat.basket}</p>
+								<p>{cat.adjectives}</p>
+								<p>{cat.description}</p>
+							</div>
 						)
 						}
 					})}
