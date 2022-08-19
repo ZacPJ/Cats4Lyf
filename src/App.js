@@ -1,4 +1,7 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import logo from "./imgs/paw_v1.png";
+
+
 
 export default function App() {
 	const [toggle, setToggle] = useState(true);
@@ -8,24 +11,19 @@ export default function App() {
 
 	
 	return (
-		<div id="content">
-			<nav>
-				<div id="topBar">
-					<div id="logo">
-						<h1>Cats 4 Life</h1>
-						<img src="" alt="" />
-					</div>
+		<div id="mainWrapper">
+			<nav id="topBarMain">
+				<div>
+					<div id="topBar">
+						<div id="logo">	<h1>Cats 4 Life</h1></div>
+						<div id="logo">	<img src={logo} alt="Logo" id="logoImg" /></div>
+					</div> {/*topBar close*/}
 
-					<img src="" alt="" />
-					<button onClick={() => setToggle(!toggle)}>{toggle ? 'Hide content' : 'Show Content'}</button>
-				</div>
-
-				<div id="tagsList">
-					<button>Floofy 15</button>
-					<button>Cute 5</button>
-					<button>Grumpy 1</button>
-				</div>
+					<div id="basketImg" onClick={() => setToggle(!toggle)}></div>
+				</div> {/*topBarMain close*/}
 			</nav>
+
+
 
 			{toggle ? (<div id="basket">
 				<div className="basketCat">
@@ -36,6 +34,7 @@ export default function App() {
 				</div>
 			</div>) : ("")}
 			
+
 
 			<div id="content">
 				<div id="postHolder">
@@ -62,11 +61,13 @@ export default function App() {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>   {/* Main wrapper close */}
+		
 
 			<footer>
 				<p>Made by:</p>
-				<p>Thomas - Kurtus - Zac</p>
+				<p>Thomas - Kurtis - Zac</p>
+
 			</footer>
 		</div>
 	);
