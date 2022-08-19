@@ -3,15 +3,15 @@ import { faker } from '@faker-js/faker';
 import { random } from 'cat-names';
 
 function randomSex () {
-    let sex = Math.ceil(Math.random()*2)
-    if(sex = 1){
+    let sexnum = Math.ceil(Math.random()*2)
+    if(sexnum === 1){
         return "Male"
-    }else if (sex = 2) {
+    }else if (sexnum === 2) {
         return "Female"
     }
 } 
-function randomAge () {
-    return Math.ceil(Math.random()*20)
+function randomAge (upperAge) {
+    return Math.ceil(Math.random()*upperAge)
 }
 
 function randomPrice () {
@@ -22,19 +22,55 @@ function randomPrice () {
         let priceB = Math.round(Math.random()*100)/100
     return priceA+priceB
 }
+
 let cat = {
-    name: random(),
-    sex: randomSex(),
-    breed: faker.animal.cat(),
-    location: faker.address.city(),
-    age: randomAge(),
-    price: randomPrice(),
+    imgURL: "",
+    name: "",
+    sex: "",
+    breed: "",
+    location: "",
+    age: "",
+    price: "",
     basket: false,
     adjectives: {
-        adj1: faker.word.adjective(),
-        adj2: faker.word.adjective(),
-        adj3: faker.word.adjective(),
+        adj1: "",
+        adj2: "",
+        adj3: "",
     }
 }
-console.log(cat)
-console.log(cat.adjectives.adj1)
+
+/*{storedCat.map((cat,index) => {
+    return(*/
+const fetchCat = async (setCat, setError) => {
+    try{
+const response = await fetch(`https://api.thecatapi.com/v1/breeds`)
+    if (!response.ok){
+        throw new Error (response.statusText)
+    }
+    let data = await response.json();
+    data = data.filter(imgvar=> imgvar.image?.url!=null)
+    console.log(data)
+
+    const NewVar = data.map((cat)=>{
+        return {
+            name:random(),
+            sex:randomSex(),
+            breed:cat.name,
+            location:faker.address.city(),
+            age:randomAge(18),
+            img:cat.image.url,
+            price:randomPrice(),
+            basket:false,
+            adjectives:cat.temperament,
+            description:cat.description
+        }
+    })
+    setCat (NewVar)
+} catch (err) {
+    setError ('Could not fetch data')
+    console.log (err.message)
+}
+}
+
+
+export {fetchCat,cat}

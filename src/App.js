@@ -1,7 +1,20 @@
 import {useEffect, useState} from "react";
-
+import {fetchCat,cat} from "./comps/RandomCat.js"
+let randomImg1 = Math.floor(Math.random()*64)
+let randomImg2 = Math.floor(Math.random()*64)
+let randomImg3 = Math.floor(Math.random()*64)
+let randomImg4 = Math.floor(Math.random()*64)
+let randomImg5 = Math.floor(Math.random()*64)
 export default function App() {
-	
+	const [storedCat,setCat] = useState([]);
+    const [error, setError] = useState(null)
+
+    useEffect(() =>{
+
+fetchCat(setCat,setError);
+
+},[] );
+
 
 	return (
 		<div id="content">
@@ -11,13 +24,30 @@ export default function App() {
 						<h1>Cats 4 Life</h1>
 						<img src="" />
 					</div>
-
-					<img src="" />
+					{storedCat.map((cat,index) => {
+						if(index == randomImg1){
+						return(
+							<div key = {index}>
+							<img src={(cat.img)} />
+						   <h1>{cat.name}</h1>
+						   <p>{cat.sex}</p>
+						   <p>{cat.breed}</p>
+						   <p>{cat.location}</p>
+						   <p>{cat.age}</p>
+						   <p>£{cat.price}</p>
+						   <p>{cat.basket}</p>
+						   <p>{cat.adjectives}</p>
+						   <p>{cat.description}</p>
+						   </div>
+						)
+						}
+					})}
+					
 				</div>
 
 				<div id="tagsList">
-					<button>Floofy 15</button>
-					<button>Cute 5</button>
+					<button>{cat.age}</button>
+					<button>test</button>
 					<button>Grumpy 1</button>
 				</div>
 			</nav>
