@@ -3,10 +3,6 @@ import {useState} from "react";
 export default function App() {
 	const [toggle, setToggle] = useState(true);
 
-
-
-
-	
 	return (
 		<div id="content">
 			<nav>
