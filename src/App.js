@@ -15,6 +15,21 @@ export default function App() {
 fetchCat(setCat,setError);
 
 },[] );
+let catRoster = []
+storedCat.map((cat,index) => {
+if (index === randomImg1){
+	catRoster.push(cat)
+}else if(index === randomImg2){
+	catRoster.push(cat)
+}else if(index === randomImg3){
+	catRoster.push(cat)
+}else if(index === randomImg4){
+	catRoster.push(cat)
+}else if(index === randomImg5){
+	catRoster.push(cat)
+}
+})
+console.log(catRoster)
 
 	return (
 		<div id="mainWrapper">
@@ -26,7 +41,7 @@ fetchCat(setCat,setError);
 				</div> {/*topBar close*/}
 				<div id="basketImg" onClick={() => setToggle(!toggle)}></div>
 					{storedCat.map((cat,index) => {
-						if(index == randomImg1){
+						if(index === randomImg1){
 						return(
 							<div key = {index}>
 								<img src={(cat.img)} />
@@ -46,11 +61,6 @@ fetchCat(setCat,setError);
 					
 				</div>
 				</nav>
-				<div id="tagsList">
-					<button>{cat.age}</button>
-					<button>test</button>
-					<button>Grumpy 1</button>
-				</div>
 
 
 
@@ -71,9 +81,6 @@ fetchCat(setCat,setError);
 						<img src="" alt="" />
 
 						<div className="tags">
-							<button>Floofy</button>
-							<button>Cute</button>
-							<button>Kitten</button>
 						</div>
 
 						<div className="catInfo">
