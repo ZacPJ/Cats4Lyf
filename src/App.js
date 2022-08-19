@@ -4,7 +4,7 @@ import logo from "./imgs/paw_v1.png";
 
 
 export default function App() {
-	
+	const [toggle, setToggle] = useState(true);
 
 	return (
 		<div id="mainWrapper">
@@ -15,21 +15,27 @@ export default function App() {
 						<div id="logo">	<img src={logo} alt="Logo" id="logoImg" /></div>
 					</div> {/*topBar close*/}
 
-					<div id="basketImg"></div>
+					<div id="basketImg" onClick={() => setToggle(!toggle)}></div>
 				</div> {/*topBarMain close*/}
 			</nav>
 
 
-			<div id="tagsList">
-					<button>Floofy 15</button>
-					<button>Cute 5</button>
-					<button>Grumpy 1</button>
+
+			{toggle ? (<div id="basket">
+				<div className="basketCat">
+					<img src="" alt="" />
+
+					<p>Name</p>
+					<p>Price</p>
 				</div>
+			</div>) : ("")}
+			
+
 
 			<div id="content">
 				<div id="postHolder">
 					<div className="catPost">
-						<img />
+						<img src="" alt="" />
 
 						<div className="tags">
 							<button>Floofy</button>
@@ -46,7 +52,7 @@ export default function App() {
 
 							<div className="priceBar">
 								<p></p>
-								<img className="addCart" />
+								<img src="" alt="" className="addCart" />
 							</div>
 						</div>
 					</div>
