@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {fetchCat,cat} from "./comps/RandomCat.js"
+import logo from "./imgs/paw_v1.png";
 let randomImg1 = Math.floor(Math.random()*64)
 let randomImg2 = Math.floor(Math.random()*64)
 let randomImg3 = Math.floor(Math.random()*64)
@@ -8,7 +9,7 @@ let randomImg5 = Math.floor(Math.random()*64)
 export default function App() {
 	const [storedCat,setCat] = useState([]);
     const [error, setError] = useState(null)
-
+	const [toggle, setToggle] = useState(true);
     useEffect(() =>{
 
 fetchCat(setCat,setError);
@@ -17,13 +18,14 @@ fetchCat(setCat,setError);
 
 
 	return (
-		<div id="content">
-			<nav>
+		<div id="mainWrapper">
+		<nav id="topBarMain">
+			<div>
 				<div id="topBar">
-					<div id="logo">
-						<h1>Cats 4 Life</h1>
-						<img src="" />
-					</div>
+					<div id="logo">	<h1>Cats 4 Life</h1></div>
+					<div id="logo">	<img src={logo} alt="Logo" id="logoImg" /></div>
+				</div> {/*topBar close*/}
+				<div id="basketImg" onClick={() => setToggle(!toggle)}></div>
 					{storedCat.map((cat,index) => {
 						if(index == randomImg1){
 						return(
@@ -44,27 +46,30 @@ fetchCat(setCat,setError);
 					})}
 					
 				</div>
-
+				</nav>
 				<div id="tagsList">
 					<button>{cat.age}</button>
 					<button>test</button>
 					<button>Grumpy 1</button>
 				</div>
-			</nav>
 
-			<div id="basket">
+
+
+			{toggle ? (<div id="basket">
 				<div className="basketCat">
-					<img src="" />
+					<img src="" alt="" />
 
 					<p>Name</p>
 					<p>Price</p>
 				</div>
-			</div>
+			</div>) : ("")}
+			
+
 
 			<div id="content">
 				<div id="postHolder">
 					<div className="catPost">
-						<img />
+						<img src="" alt="" />
 
 						<div className="tags">
 							<button>Floofy</button>
@@ -81,16 +86,18 @@ fetchCat(setCat,setError);
 
 							<div className="priceBar">
 								<p></p>
-								<img className="addCart" />
+								<img src="" alt="" className="addCart" />
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>   {/* Main wrapper close */}
+		
 
 			<footer>
 				<p>Made by:</p>
-				<p>Thomas - Kurtus - Zac</p>
+				<p>Thomas - Kurtis - Zac</p>
+
 			</footer>
 		</div>
 	);

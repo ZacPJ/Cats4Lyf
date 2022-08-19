@@ -1,0 +1,19 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--pure_white);
+    max-width: 1000px;
+    margin: auto;
+}
+
+
+#mainWrapper {
+    background-color: var(--orange_lightest);
+    padding: 5px;
+}
+
+p {
+    color: var(--pure_black);
+}

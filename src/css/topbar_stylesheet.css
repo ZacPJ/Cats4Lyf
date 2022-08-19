@@ -1,0 +1,47 @@
+#topBarMain {
+    background-image: linear-gradient(to right, var(--pure_black), var(--black_gradient));
+    width: 100%;
+    height: 60px;
+}
+
+#topBar {
+    height: 60px;
+    color: var(--orange_lighter);
+
+    display: flex;
+    flex-direction: row;
+    float: left;
+
+    
+}
+
+#topBar h1 {
+    transform: translateY(-7px);
+    padding-left: 20px;
+}
+
+#logoImg {
+    height: 50px;
+    margin-top: 4px;
+
+}
+
+
+#basketImg {
+    background-image: url("../imgs/basket.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80px;
+    float: right;
+    height: 50px;
+    padding: 5px;
+    width: 80px;
+    background-color: var(--orange_darkest);
+
+}
+
+#basketImg:hover {
+    background-image: url("../imgs/basket_darker.png");
+    cursor:crosshair;
+    background-color: var(--orange_lighter);
+}
