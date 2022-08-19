@@ -1,11 +1,17 @@
 import {useEffect, useState} from "react";
-import {fetchCat,cat} from "./comps/RandomCat.js"
+import {fetchCat} from "./comps/RandomCat.js"
 import logo from "./imgs/paw_v1.png";
-let randomImg1 = Math.floor(Math.random()*64)
-let randomImg2 = Math.floor(Math.random()*64)
-let randomImg3 = Math.floor(Math.random()*64)
-let randomImg4 = Math.floor(Math.random()*64)
-let randomImg5 = Math.floor(Math.random()*64)
+let randomImg = []
+let randomImgTemp = 0
+for (let i = 0; i!==12; i++){
+	randomImgTemp = Math.floor(Math.random()*64)
+	while (randomImg.includes(randomImgTemp)){
+		randomImgTemp = Math.floor(Math.random()*64)
+	}
+	randomImg.push(randomImgTemp)
+}
+console.log(randomImgTemp,randomImg)
+
 export default function App() {
 	const [storedCat,setCat] = useState([]);
     const [error, setError] = useState(null)
@@ -15,22 +21,30 @@ export default function App() {
 fetchCat(setCat,setError);
 
 },[] );
-let catRoster = []
-storedCat.map((cat,index) => {
-if (index === randomImg1){
-	catRoster.push(cat)
-}else if(index === randomImg2){
-	catRoster.push(cat)
-}else if(index === randomImg3){
-	catRoster.push(cat)
-}else if(index === randomImg4){
-	catRoster.push(cat)
-}else if(index === randomImg5){
-	catRoster.push(cat)
+let catRoster = {
 }
-})
-console.log(catRoster)
+let catNum = 0
+let indexStore = []
+function storeRoster(price,name,index){
 
+	console.log(index)
+	if (catNum < 1||indexStore.includes(index)==false){
+		indexStore.push(index)
+		console.log(indexStore)
+		console.log(catRoster)
+		catRoster[catNum] = {index,price,name}
+		catNum += 1
+		calculateBasket(catNum-1)
+
+	}
+}
+let total = 0
+function calculateBasket (cat){
+	
+	total = total + catRoster[cat].price
+	console.log(total)
+
+}
 	return (
 		<div id="mainWrapper">
 		<nav id="topBarMain">
@@ -40,10 +54,11 @@ console.log(catRoster)
 					<div id="logo">	<img src={logo} alt="Logo" id="logoImg" /></div>
 				</div> {/*topBar close*/}
 				<div id="basketImg" onClick={() => setToggle(!toggle)}></div>
+					
 					{storedCat.map((cat,index) => {
-						if(index === randomImg1){
+						if(index === randomImg[1]){
 						return(
-							<div key = {index}>
+							<div id = "cat1" key = {index}>
 								<img src={(cat.img)} />
 								<h1>{cat.name}</h1>
 								<p>{cat.sex}</p>
@@ -54,9 +69,187 @@ console.log(catRoster)
 								<p>{cat.basket}</p>
 								<p>{cat.adjectives}</p>
 								<p>{cat.description}</p>
+								<button onClick={()=> storeRoster(cat.price,cat.name,index)}>Add to Basket</button>
 							</div>
 						)
 						}
+						if(index === randomImg[2]) {
+							return(
+							<div id = "cat2" key = {index}>
+								<img src={(cat.img)} />
+								<h1>{cat.name}</h1>
+								<p>{cat.sex}</p>
+								<p>{cat.breed}</p>
+								<p>{cat.location}</p>
+								<p>{cat.age}</p>
+								<p>£{cat.price}</p>
+								<p>{cat.basket}</p>
+								<p>{cat.adjectives}</p>
+								<p>{cat.description}</p>
+								<button onClick={()=> storeRoster(cat.price,cat.name,index)}>Add to Basket</button>
+							</div>
+					)}
+					if(index === randomImg[3]) {
+						return(
+						<div id = "cat3" key = {index}>
+							<img src={(cat.img)} />
+							<h1>{cat.name}</h1>
+							<p>{cat.sex}</p>
+							<p>{cat.breed}</p>
+							<p>{cat.location}</p>
+							<p>{cat.age}</p>
+							<p>£{cat.price}</p>
+							<p>{cat.basket}</p>
+							<p>{cat.adjectives}</p>
+							<p>{cat.description}</p>
+							<button onClick={()=> storeRoster(cat.price,cat.name,index)}>Add to Basket</button>
+						</div>
+				)}
+				if(index === randomImg[4]) {
+					return(
+					<div id = "cat4" key = {index}>
+						<img src={(cat.img)} />
+						<h1>{cat.name}</h1>
+						<p>{cat.sex}</p>
+						<p>{cat.breed}</p>
+						<p>{cat.location}</p>
+						<p>{cat.age}</p>
+						<p>£{cat.price}</p>
+						<p>{cat.basket}</p>
+						<p>{cat.adjectives}</p>
+						<p>{cat.description}</p>
+						<button onClick={()=> storeRoster(cat.price,cat.name,index)}>Add to Basket</button>
+					</div>
+			)}
+			if(index === randomImg[5]) {
+				return(
+				<div id = "cat5" key = {index}>
+					<img src={(cat.img)} />
+					<h1>{cat.name}</h1>
+					<p>{cat.sex}</p>
+					<p>{cat.breed}</p>
+					<p>{cat.location}</p>
+					<p>{cat.age}</p>
+					<p>£{cat.price}</p>
+					<p>{cat.basket}</p>
+					<p>{cat.adjectives}</p>
+					<p>{cat.description}</p>
+					<button onClick={()=> storeRoster(cat.price,cat.name,index)}>Add to Basket</button>
+				</div>
+		)}
+		if(index === randomImg[6]) {
+			return(
+			<div id = "cat6" key = {index}>
+				<img src={(cat.img)} />
+				<h1>{cat.name}</h1>
+				<p>{cat.sex}</p>
+				<p>{cat.breed}</p>
+				<p>{cat.location}</p>
+				<p>{cat.age}</p>
+				<p>£{cat.price}</p>
+				<p>{cat.basket}</p>
+				<p>{cat.adjectives}</p>
+				<p>{cat.description}</p>
+				<button onClick={()=> storeRoster(cat.price,cat.name,index)}>Add to Basket</button>
+			</div>
+	)}
+	if(index === randomImg[7]) {
+		return(
+		<div id = "cat7" key = {index}>
+			<img src={(cat.img)} />
+			<h1>{cat.name}</h1>
+			<p>{cat.sex}</p>
+			<p>{cat.breed}</p>
+			<p>{cat.location}</p>
+			<p>{cat.age}</p>
+			<p>£{cat.price}</p>
+			<p>{cat.basket}</p>
+			<p>{cat.adjectives}</p>
+			<p>{cat.description}</p>
+			<button onClick={()=> storeRoster(cat.price,cat.name,index)}>Add to Basket</button>
+		</div>
+)}
+if(index === randomImg[8]) {
+	return(
+	<div id = "cat8" key = {index}>
+		<img src={(cat.img)} />
+		<h1>{cat.name}</h1>
+		<p>{cat.sex}</p>
+		<p>{cat.breed}</p>
+		<p>{cat.location}</p>
+		<p>{cat.age}</p>
+		<p>£{cat.price}</p>
+		<p>{cat.basket}</p>
+		<p>{cat.adjectives}</p>
+		<p>{cat.description}</p>
+		<button onClick={()=> storeRoster(cat.price,cat.name,index)}>Add to Basket</button>
+	</div>
+)}
+if(index === randomImg[9]) {
+	return(
+	<div id = "cat9" key = {index}>
+		<img src={(cat.img)} />
+		<h1>{cat.name}</h1>
+		<p>{cat.sex}</p>
+		<p>{cat.breed}</p>
+		<p>{cat.location}</p>
+		<p>{cat.age}</p>
+		<p>£{cat.price}</p>
+		<p>{cat.basket}</p>
+		<p>{cat.adjectives}</p>
+		<p>{cat.description}</p>
+		<button onClick={()=> storeRoster(cat.price,cat.name,index)}>Add to Basket</button>
+	</div>
+)}
+if(index === randomImg[10]) {
+	return(
+	<div id = "cat10" key = {index}>
+		<img src={(cat.img)} />
+		<h1>{cat.name}</h1>
+		<p>{cat.sex}</p>
+		<p>{cat.breed}</p>
+		<p>{cat.location}</p>
+		<p>{cat.age}</p>
+		<p>£{cat.price}</p>
+		<p>{cat.basket}</p>
+		<p>{cat.adjectives}</p>
+		<p>{cat.description}</p>
+		<button onClick={()=> storeRoster(cat.price,cat.name,index)}>Add to Basket</button>
+	</div>
+)}
+if(index === randomImg[11]) {
+	return(
+	<div id = "cat11" key = {index}>
+		<img src={(cat.img)} />
+		<h1>{cat.name}</h1>
+		<p>{cat.sex}</p>
+		<p>{cat.breed}</p>
+		<p>{cat.location}</p>
+		<p>{cat.age}</p>
+		<p>£{cat.price}</p>
+		<p>{cat.basket}</p>
+		<p>{cat.adjectives}</p>
+		<p>{cat.description}</p>
+		<button onClick={()=> storeRoster(cat.price,cat.name,index)}>Add to Basket</button>
+	</div>
+)}
+if(index === randomImg[0]) {
+	return(
+	<div id = "cat0" key = {index}>
+		<img src={(cat.img)} />
+		<h1>{cat.name}</h1>
+		<p>{cat.sex}</p>
+		<p>{cat.breed}</p>
+		<p>{cat.location}</p>
+		<p>{cat.age}</p>
+		<p>£{cat.price}</p>
+		<p>{cat.basket}</p>
+		<p>{cat.adjectives}</p>
+		<p>{cat.description}</p>
+		<button onClick={()=> storeRoster(cat.price,cat.name,index)}>Add to Basket</button>
+	</div>
+)}
+
 					})}
 					
 				</div>
