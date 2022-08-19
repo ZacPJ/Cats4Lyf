@@ -1,30 +1,7 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 export default function App() {
-	const [cats, setCats] = useState([]);
-	const url = `https://api.thecatapi.com/v1/images/search?limit=10`;
-	const api_key = "72eb923a-6495-4792-821c-9f163794b194"
-
-	useEffect(() => {
-		const setCats = async () => {
-			try {
-				const response = await fetch(url,{headers: {'x-api-key': api_key}});
-
-				if(!response.ok){
-					throw new Error(response.statusText);
-				}
-				
-				const data = await response.json();
-				setCats(data);
-			} catch (err){
-				console.log(err.message);
-			}
-		}
-
-		
-	}, [])
-
-	console.log(cats)
+	const [toggle, setToggle] = useState(true);
 
 	return (
 		<div id="content">
@@ -32,10 +9,11 @@ export default function App() {
 				<div id="topBar">
 					<div id="logo">
 						<h1>Cats 4 Life</h1>
-						<img src="" />
+						<img src="" alt="" />
 					</div>
 
-					<img src="" />
+					<img src="" alt="" />
+					<button onClick={() => setToggle(!toggle)}>{toggle ? 'Hide content' : 'Show Content'}</button>
 				</div>
 
 				<div id="tagsList">
@@ -45,19 +23,20 @@ export default function App() {
 				</div>
 			</nav>
 
-			<div id="basket">
+			{toggle ? (<div id="basket">
 				<div className="basketCat">
-					<img src="" />
+					<img src="" alt="" />
 
 					<p>Name</p>
 					<p>Price</p>
 				</div>
-			</div>
+			</div>) : ("")}
+			
 
 			<div id="content">
 				<div id="postHolder">
 					<div className="catPost">
-						<img />
+						<img src="" alt="" />
 
 						<div className="tags">
 							<button>Floofy</button>
@@ -74,7 +53,7 @@ export default function App() {
 
 							<div className="priceBar">
 								<p></p>
-								<img className="addCart" />
+								<img src="" alt="" className="addCart" />
 							</div>
 						</div>
 					</div>
